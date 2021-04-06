@@ -45,6 +45,8 @@ function move(deltaX = 0, deltaY = 0) {
     const currentLeft = extractPixelsFromString(circle.style.left)
     circle.style.top = currentTop + deltaY + 'px'
     circle.style.left = currentLeft + deltaX + 'px'
+
+    displayPosition()
 }
 
 
@@ -63,13 +65,15 @@ function moveLeft(deltaLeft = 10) {
 }
 
 function displayPosition() {
+    container.innerHTML = '' //czyszczenie kontenera
+
     const position = circle.getBoundingClientRect()
 
     const pX = document.createElement('p')
     const pY = document.createElement('p')
 
-    pX.innerText = 'Position X: ' + position.x
-    pY.innerText = 'Position X: ' + position.y
+    pX.innerText = 'Position X: ' + ( position.x + position.width / 2)
+    pY.innerText = 'Position X: ' + ( position.y + position.height / 2) 
 
     container.appendChild(pX)
     container.appendChild(pY)
